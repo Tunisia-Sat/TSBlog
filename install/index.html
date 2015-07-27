@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta name="description" content="TSBlog, The Open Source Tunisian Blog CMS">
+        <meta name="keywords" content="TSBlog, Blog, CMS, Tunisia-Sat">
+        <meta name="author" content="Nader (@beeekk) and Marwein (@Marwein)">
+        <title>TSBlog - Installation</title>
+        
+        <!-- BOOTSTRAP -->
+        <link rel="stylesheet" href="../template/default/css/bootstrap.min.css" />
+        <!-- FONT AWSOME -->
+        <link rel="stylesheet" href="../template/default/css/font-awesome.min.css" />
+        <!-- SPECIAL STYLES -->
+        <link rel="stylesheet" href="../template/default/css/main.css" />
+        
+        <!-- MODERNIZER SCRIPT TO ADD OLDER BROWSERS -->
+        <script src="../template/default/js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" data-topbar role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="#" class="navbar-brand">TSBlog</a>
+                    <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar-collapsible">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-collapsible" aria-expanded="false">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="#"><i class="fa fa-download"></i> Install</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <section class="container" id="installation">
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-md-offset-2">
+                    <p>Fill the form below with your database credentials, and the admin credentials.</p>
+                    <form id="install-form" role="form" class="form-horizontal">
+                        <fieldset>
+                            <legend>Database</legend>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <input type="text" name="host" class="form-control" placeholder="Hostname" />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                    	<input type="text" name="dbname" class="form-control" placeholder="Database Name" />
+									</div>
+                                </div>
+                            </div>
+                                
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <input type="text" name="user" class="form-control" placeholder="Username" />
+                                    </div>
+                                </div>
+                            </div>
+                                
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <input type="password" name="pass" class="form-control" placeholder="Password" />
+                                    </div>
+                                </div>
+                            </div>
+                                
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <input type="text" name="prefix" class="form-control" placeholder="Tables prefix" value="tsb_" />
+                                    </div>
+                                </div>
+                            </div>
+                                
+                        </fieldset>
+                            
+                        <fieldset>
+                            <legend>Administrator account</legend>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <input type="text" name="firstname" class="form-control" placeholder="First Name" />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <input type="text" name="lastname" class="form-control" placeholder="Last Name" />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <input type="email" name="email" class="form-control" placeholder="Email" />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <input type="password" name="adminpass" class="form-control" placeholder="Password" />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <input type="password" name="confadminpass" class="form-control" placeholder="Password confirmation" />
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                            
+                        <fieldset>
+                            <button type="submit" name="install" id="install" class="btn btn-success pull-right"><i class="fa fa-check"></i> Install</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <script src="../template/default/js/jquery-1.11.2.min.js"></script>
+        <script src="../template/default/js/bootstrap.min.js"></script>
+        <script src="../template/default/js/formValidation.js"></script>
+        <script src="../template/default/js/validation.js"></script>
+        <script src="../template/default/js/main.js"></script>
+    </body>
+</html>

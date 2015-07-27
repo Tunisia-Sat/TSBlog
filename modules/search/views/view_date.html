@@ -1,0 +1,21 @@
+<?php
+if ( count($arts) == 0 ) {
+	echo '<div class="info">'.$lang139 . ' : ' . $mois[$date] . "-" . date('Y');
+} else {
+	?>
+<fieldset>
+<legend><?php echo $lang136; ?></legend>
+	<?php echo $lang138;?> : <q><?php echo date('M', $date) . ' ' . date('Y'); ?></q>
+	<?php
+	foreach ( $arts as $art ) {
+		?>
+		<div class="article">
+			<a href="<?php echo PATH; ?>article/show/<?php echo $art['id'];?>"><?php echo $art['title']; ?></a>
+		</div>
+		<?php
+	}
+	?>
+</fieldset>
+	<?php
+}
+?>

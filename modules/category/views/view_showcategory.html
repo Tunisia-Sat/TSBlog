@@ -1,0 +1,36 @@
+<div class="category"><q><?php echo $title; ?></q></div>
+<hr />
+<?php
+if ( count($rslt) > 0 ) {
+	echo'<table width="100%">';
+	foreach ( $rslt as $art ) {
+	
+	$stmt = $PDO->prepare('SELECT fullname FROM members WHERE id=:id');
+	$stmt->bindParam(':id', $art['member_id'], PDO::PARAM_INT);
+	$stmt->execute();
+	$rslt2 = $stmt->fetchall(PDO::FETCH_ASSOC);
+	$stmt->closecursor();
+	?>
+<tr>
+	<td>
+		<div class="article">
+			<a href="<?php echo PATH; ?>article/show/<?php echo $art['id'];?>"><?php echo ucfirst($art['title']); ?></a>
+		</div>
+	</td>
+	<td>
+		<?php 
+			echo $lang120 . ' : ' . $rslt2[0]['fullname'];
+		?>
+	</td>
+	<td>
+		<?php
+			echo date('D, d M Y', $art['date_publication']).', '.date('H:i:s', $art['date_publication']);
+		?>
+	</td>
+</tr>
+<?php
+}
+echo'</table>';
+} else
+	echo '<div class="info">'.$lang119.'</div>';
+?>

@@ -1,0 +1,21 @@
+<?php
+if ( count($arts) == 0 ) {
+	echo '<div class="info">'.$lang137.' : <q>' . $tag .'</q>';
+} else {
+	?>
+<fieldset>
+<legend><?php echo $lang136; ?></legend>
+	<?php echo $lang138;?> : <q><?php echo $tag; ?></q>
+	<?php
+	foreach ( $arts as $art ) {
+		?>
+		<div class="article">
+			<a href="<?php echo PATH; ?>article/show/<?php echo $art['id'];?>"><?php echo ucfirst(hightlight($art['title'], $tag)); ?></a>
+		</div>
+		<?php
+	}
+	?>
+</fieldset>
+	<?php
+}
+?>

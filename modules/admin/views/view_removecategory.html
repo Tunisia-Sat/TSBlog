@@ -1,0 +1,16 @@
+<?php
+
+$opts = array();
+foreach( $rslt as &$value ) {
+	$opts[$value['id']] = $value['title'];
+}
+
+// Categories
+$categories = array('label'=>$lang94,
+                    'name-id'=>'id',
+					'type'=>'select',
+					'options'=>$opts);
+					
+// Generate form
+form(array($categories), $lang95, $lang84, true, true, false);
+?>

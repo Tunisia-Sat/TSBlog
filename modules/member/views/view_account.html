@@ -1,0 +1,91 @@
+<fieldset>
+<legend><?php echo $lang57; ?></legend>
+<table>
+<tr>
+	<td>
+		<img width="150" height="162" src="<?php echo $_SESSION['member']['picture']; ?>" />
+	</td>
+	<td valign="top">
+		<table>
+			<tr>
+				<td>
+					<b><?php echo $lang27; ?></b>
+				</td>
+				<td>
+					: <?php echo $_SESSION['member']['fullname']; ?>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b><?php echo $lang28; ?></b>
+				</td>
+				<td>
+					: <?php echo $_SESSION['member']['email']; ?>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b><?php echo $lang58; ?></b>
+				</td>
+				<td>
+					: <img src="<?php echo PATH . 'uploads/flags/' . $_SESSION['member']['country'] . '.png'; ?>" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b><?php echo $lang59; ?></b>
+				</td>
+				<td>
+					: <?php 
+						$phpdate = strtotime( $_SESSION['member']['birthday'] );
+						$mysqldate = date( 'D, d M Y', $phpdate );
+						echo $mysqldate;
+					?>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b><?php echo $lang60; ?></b>
+				</td>
+				<td>
+					: <?php echo $_SESSION['member']['gender']; ?>
+				</td>
+			</tr>
+		</table>
+	</td>
+</tr>
+</table>
+</fieldset>
+
+<?php
+
+// Current password
+$password_curr = array(	'label'=>$lang61,
+					'name-id'=>'password_curr',
+					'type'=>'password',
+					'value'=>false);
+
+// New password
+$password_new = array(	'label'=>$lang29,
+					'name-id'=>'password_new',
+					'type'=>'password',
+					'value'=>false);
+
+// New password confirmation
+$password_conf = array( 'label'=>$lang30,
+						'name-id'=>'password_conf',
+						'type'=>'password',
+						'value'=>false);
+
+// Generate form
+form(array($password_curr, $password_new, $password_conf), $lang62, $lang63, true, true, false);
+
+?>
+
+<form action="" method="POST" enctype="multipart/form-data">
+<fieldset>
+<legend><?php echo $lang64; ?></legend>
+<input type="file" name="picture" id="picture" /> <br /><br />
+<input type="submit" name="picture_submit" value="<?php echo $lang63; ?>" />
+</fieldset>
+</form>

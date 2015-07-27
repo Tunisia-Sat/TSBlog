@@ -1,0 +1,16 @@
+<?php
+
+$forms = array();
+
+foreach( $rslt as &$value ) {
+	$forms[] = array('label'=>$lang94,
+	                 'name-id'=>$value['id'],
+					 'type'=>'text',
+					 'value'=>true,
+					 'valuebyuser'=>$value["title"]);
+}
+
+// Generate form
+form($forms, $lang97, $lang85, true, true, false);
+
+?>

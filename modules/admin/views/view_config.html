@@ -1,0 +1,43 @@
+<?php
+
+// ID
+$sitename = array('label'=>$lang114,
+			 'name-id'=>'sitename',
+			 'type'=>'text',
+			 'value'=>true,
+			 'valuebyuser'=>$rslt[0]['sitename']);
+
+// Max Size
+$maxsize = array('label'=>$lang115,
+				 'name-id'=>'maxsize',
+				 'type'=>'text',
+				 'value'=>true,
+				 'valuebyuser'=>$rslt[0]['maxsize']);
+
+// Phone number
+$phonenumber = array('label'=>$lang116,
+                     'name-id'=>'phonenumber',
+					 'type'=>'text',
+					 'value'=>true,
+					 'valuebyuser'=>$rslt[0]['phonenumber']);
+
+// Email adress
+$email = array(	'label'=>$lang28,
+				'name-id'=>'email',
+				'type'=>'email',
+				'value'=>true,
+				'valuebyuser'=>$rslt[0]['email']);
+				
+// About me
+$aboutme = array('label'=>$lang73,
+		         'name-id'=>'aboutme',
+				 'type'=>'textarea',
+				 'value'=>true,
+				 'valuebyuser'=>$rslt[0]['aboutme'],
+				 'cols'=>50,
+				 'rows'=>10);
+			 
+// Generate form
+form(array($sitename, $maxsize, $phonenumber, $email, $aboutme), $lang89, $lang63, true, true, false);
+
+?>

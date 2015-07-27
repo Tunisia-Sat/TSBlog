@@ -1,0 +1,19 @@
+<a href="<?php echo PATH; ?>home/lang/fr"><img src="<?php echo PATH; ?>style/img/fr.png" /></a>
+<a href="<?php echo PATH; ?>home/lang/eng"><img src="<?php echo PATH; ?>style/img/eng.png" /></a>
+
+<div class="publish">
+	<a href="<?php echo PATH; ?>member/publish">
+		<?php echo $lang133; ?>
+	</a>
+</div>
+<br />
+
+<div class="right">
+<?php
+foreach ( $mois as $key=>$value ) {
+	?>
+	<a class="right" href="<?php echo PATH; ?>search/date/<?php echo $key; ?>"><?php echo $value; ?></a><br />
+	<?php
+}
+?>
+</div>

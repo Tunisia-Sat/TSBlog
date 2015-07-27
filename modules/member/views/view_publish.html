@@ -1,0 +1,31 @@
+<?php
+
+// Title
+$title2 = array('label'=>$lang94,
+			   'name-id'=>'title',
+			   'type'=>'text',
+			   'value'=>true);
+			   
+$opts = array();
+foreach( $rslt as &$value ) {
+	$opts[$value['id']] = $value['title'];
+}
+
+// Categories
+$categories2 = array('label'=>$lang131,
+                    'name-id'=>'category_id',
+					'type'=>'select',
+					'options'=>$opts);
+
+// Content
+$content2 = array('label'=>$lang130,
+                  'name-id'=>'content',
+				  'type'=>'textarea',
+				  'value'=>true,
+				  'cols'=>50,
+				  'rows'=>10);
+				  
+// Generate form
+form(array($title2, $categories2, $content2), $lang133, $lang133, true, true, false);
+
+?>

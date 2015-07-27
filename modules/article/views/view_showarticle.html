@@ -1,0 +1,116 @@
+<div class="article"><q><?php echo $title; ?></q></div>
+<div class="time">
+	<?php echo $lang121.' '.date('D, d M Y', $date_publication).', '.date('H:i:s', $date_publication); ?>
+</div>
+
+<div id="com">
+	<table width="100%">
+		<tr valign="top">
+			<td class="art">
+				<table width="100%">
+					<tr valign="top">
+						<td width="50">
+							<img width="50" height="50" src="<?php echo $member_article[0]['picture']; ?>" />
+						</td>
+						<td>
+							<?php
+								echo $lang125.' : <a href="'.PATH.'member/show/'.$member_article[0]['id'].'">'.$member_article[0]['fullname'].'</a><br />';
+								echo $lang58 . ' : ';
+							?>
+							<img width="20" height="13" src="<?php echo PATH . 'uploads/flags/' . $member_article[0]['country'] . '.png'; ?>" /><br />
+							<?php
+								echo $lang126 . ' : '.$posts;
+							?>
+						</td>
+						<?php
+						if ( $is_admin ) {
+						?>
+						<td width="150">
+						<a href="<?php echo PATH; ?>admin/removearticle/<?php echo $id; ?>">
+							<img src="<?php echo PATH; ?>style/img/delete.png" />
+							<?php echo $lang127; ?>
+						</a>
+						<br />
+						<a href="<?php echo PATH; ?>admin/editarticle/<?php echo $id; ?>">
+							<img src="<?php echo PATH; ?>style/img/edit.png" />
+							<?php echo $lang128; ?>
+						</a>
+						</td>
+						<?php } ?>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td style='padding-top: 20px'>
+				<b><?php echo stripslashes($content); ?></b>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div class="tags">
+	<?php 
+	foreach ( $tags as $key=>$value ) {
+		$tags[$key] = '<a href="' . PATH . 'search/tag/' . $value. '">' . $value . '</a>';
+	}
+
+	$tags = implode(', ', $tags);
+
+	echo $tags;
+
+	?>
+</div>
+
+<?php
+if ( count($coms) > 0 ) { // Comments exist
+	foreach ( $coms as $com ) {
+		$mid_com = $com['member_id'];
+		$stmt = $PDO->prepare('SELECT * FROM members WHERE id=:id');
+		$stmt->bindParam(':id', $mid_com, PDO::PARAM_INT);
+		$stmt->execute();
+		$member_com = $stmt->fetchall(PDO::FETCH_ASSOC);
+		$stmt->closecursor();
+		?>
+		<div id="com">
+			<table width="100%">
+				<tr valign="top">
+					<td class="com">
+						<img width="50" height="50" src="<?php echo $member_com[0]['picture']; ?>" />
+					</td>
+					<td>
+						<?php
+							echo '<a href="'.PATH.'member/show/'.$member_com[0]['id'].'">'.$member_com[0]['fullname'].'</a> '.$lang124.' :';
+						?>
+						<br />
+						<b><?php echo stripslashes($com['content']); ?></b>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<font size="1">
+						<?php echo $lang121.' '.date('D, d M Y', $com['date_publication']).', '.date('H:i:s', $com['date_publication']);?>
+						</font>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<?php
+	}
+}
+
+// checking if visitor is connected
+if ( $connected ) {
+
+	// Comment
+	$comment = array('label'=>$lang123,
+					 'name-id'=>'comment',
+					 'type'=>'textarea',
+					 'value'=>false,
+					 'cols'=>50,
+					 'rows'=>10);
+
+	// Generate form
+	form(array($comment), $lang122, $lang122, true, true, false);
+}
+?>

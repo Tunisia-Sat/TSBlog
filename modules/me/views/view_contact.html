@@ -1,0 +1,26 @@
+<?php
+
+// Full name
+$fullname = array(	'label'=>$lang27,
+					'name-id'=>'fullname',
+					'type'=>'text',
+					'value'=>true);
+
+// Email adress
+$email = array(	'label'=>$lang28,
+				'name-id'=>'email',
+				'type'=>'email',
+				'value'=>true);
+
+// Message
+$message = array(	'label'=>$lang76,
+				'name-id'=>'message',
+				'type'=>'textarea',
+				'value'=>true,
+				'rows'=>10,
+				'cols'=>50);
+				
+// Generate form
+form(array($fullname, $email, $message), $lang9, $lang77, true, true, true);
+
+?>

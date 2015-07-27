@@ -1,0 +1,59 @@
+<?php
+foreach ( $rslt as $cat ) {
+?>
+<fieldset>
+<legend class="category">
+	<a href="<?php echo PATH; ?>category/show/<?php echo $cat['id'];?>">
+			<?php echo ucfirst($cat['title']); ?>
+	</a>
+</legend>
+
+<?php
+	$category_id = $cat['id'];
+	
+	// Getting articles
+	$stmt = $PDO->prepare('SELECT * FROM articles WHERE category_id=:category_id ORDER BY id DESC LIMIT 10');
+	$stmt->bindParam(':category_id', $category_id, PDO::PARAM_INT);
+	$stmt->execute();
+	$rows = $stmt->rowCount();
+	$rslt = $stmt->fetchall(PDO::FETCH_ASSOC);
+	$stmt->closecursor();
+	
+	if($rows>0) {
+	echo'<table width="100%">';
+	foreach ( $rslt as $art ) {
+	
+	$stmt = $PDO->prepare('SELECT fullname FROM members WHERE id=:id');
+	$stmt->bindParam(':id', $art['member_id'], PDO::PARAM_INT);
+	$stmt->execute();
+	$rslt2 = $stmt->fetchall(PDO::FETCH_ASSOC);
+	$stmt->closecursor();
+?>
+	
+<tr>
+	<td>
+		<div class="article">
+			<a href="<?php echo PATH; ?>article/show/<?php echo $art['id'];?>"><?php echo ucfirst($art['title']); ?></a>
+		</div>
+	</td>
+	<td>
+		<?php 
+			echo $lang120 . ' : ' . $rslt2[0]['fullname'];
+		?>
+	</td>
+	<td>
+		<?php
+			echo date('D, d M Y', $art['date_publication']).', '.date('H:i:s', $art['date_publication']);
+		?>
+	</td>
+</tr>
+<?php
+}
+echo'</table>';
+} else
+	echo '<div class="info">'.$lang119.'</div>';
+?>
+</fieldset>
+<?php
+}
+?>
