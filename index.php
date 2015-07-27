@@ -5,18 +5,13 @@
 ** Script version   : 2
 ** Script developer : Beeekk
 */
-function installed() {
-	$filename = "./install/";
-	return file_exists($filename));
-}
-
-if (!installed()) {
+if (file_exists("./install/")) {
 	header('Location: install/');
 }
 else {
 	// Start session
 	session_start();
-
+	
 	// Getting module
 	$module = !empty($_GET['module']) ? $_GET['module'] : NULL ;
 
